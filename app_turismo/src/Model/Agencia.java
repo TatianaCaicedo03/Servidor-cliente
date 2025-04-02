@@ -9,7 +9,7 @@ import javax.swing.JOptionPane;
 import Controller.Conexion;
 
 public class Agencia {
-
+	Conexion connector = new Conexion(); 
 	public String nombre;
 	public String dirreccion;
 	public String correo;
@@ -72,7 +72,7 @@ public class Agencia {
 	public void setIdcampania(int idcampania) {
 		this.idcampania = idcampania;
 	}
-	Conexion connector = new Conexion(); 
+	
 	
 	public void create (String nombre, String dirreccion, String correo, int telefono, String web,int idcampania) {
 		Connection dbConnection = null;
@@ -92,5 +92,25 @@ public class Agencia {
 			System.out.println(e.getMessage());
 		}
 		
+	}
+	public void delete (int idagencia) {
+		Connection dbConnection = null;
+		PreparedStatement pst = null;
+		String script = "DELETE FROM  tblagencias WHERE idagencia = ? ";
+		try {
+			dbConnection = connector.conectarBD();
+			pst = dbConnection.prepareStatement(script);
+			
+			pst.setInt(1,idagencia);
+			
+			int resp = JOptionPane.showConfirmDialog(null, "¿Desea eliminar el registro No. " + idagencia  +" ? ");
+			
+			if (resp == JOptionPane.OK_OPTION) {
+				pst.executeUpdate();
+				JOptionPane.showConfirmDialog(null,"Registro No. "+idagencia+" Eliminado Correctamente");
+			}
+			
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());		}
 	}
 }

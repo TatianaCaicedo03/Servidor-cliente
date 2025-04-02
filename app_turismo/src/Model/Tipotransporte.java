@@ -54,4 +54,24 @@ public class Tipotransporte {
 		}
 	}
 	
+	 public void delete (int idtipo) {
+			Connection dbConnection = null;
+			PreparedStatement pst = null;
+			String script = "DELETE FROM tbltipotransporte WHERE idtipo = ? ";
+			try {
+				dbConnection = conector.conectarBD();
+				pst = dbConnection.prepareStatement(script);
+				
+				pst.setInt(1,idtipo);
+				
+				int resp = JOptionPane.showConfirmDialog(null, "¿Desea eliminar el registro No. " + idtipo  +" ? ");
+				
+				if (resp == JOptionPane.OK_OPTION) {
+					pst.executeUpdate();
+					JOptionPane.showConfirmDialog(null,"Registro No. "+idtipo+" Eliminado Correctamente");
+				}
+				
+			} catch (SQLException e) {
+				System.out.println(e.getMessage());		}
+		}
 }

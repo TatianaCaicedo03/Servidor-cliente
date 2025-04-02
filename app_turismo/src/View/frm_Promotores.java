@@ -15,6 +15,11 @@ import javax.swing.JButton;
 import java.awt.Color;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import javax.swing.JSeparator;
+import javax.swing.SwingConstants;
+import javax.swing.ImageIcon;
 
 public class frm_Promotores extends JFrame {
 
@@ -31,6 +36,7 @@ public class frm_Promotores extends JFrame {
 	private JTextField txtTelefono;
 	private JTextField txtIdAgencia;
 	private JTextField txtId;
+	private JTextField txtIDPromotor;
 
 	/**
 	 * Launch the application.
@@ -53,7 +59,7 @@ public class frm_Promotores extends JFrame {
 	 */
 	public frm_Promotores() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 469, 300);
+		setBounds(100, 100, 681, 294);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(205, 193, 227));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -93,17 +99,17 @@ public class frm_Promotores extends JFrame {
 		
 		JLabel lblNewLabel_1_5 = new JLabel("Direccion");
 		lblNewLabel_1_5.setFont(new Font("Tahoma", Font.BOLD, 11));
-		lblNewLabel_1_5.setBounds(127, 99, 91, 14);
+		lblNewLabel_1_5.setBounds(180, 99, 91, 14);
 		contentPane.add(lblNewLabel_1_5);
 		
 		JLabel lblNewLabel_1_6 = new JLabel("Correo personal");
 		lblNewLabel_1_6.setFont(new Font("Tahoma", Font.BOLD, 11));
-		lblNewLabel_1_6.setBounds(252, 99, 91, 14);
+		lblNewLabel_1_6.setBounds(327, 99, 91, 14);
 		contentPane.add(lblNewLabel_1_6);
 		
 		JLabel lblNewLabel_1_7 = new JLabel("ID Agencia");
 		lblNewLabel_1_7.setFont(new Font("Tahoma", Font.BOLD, 11));
-		lblNewLabel_1_7.setBounds(20, 194, 91, 14);
+		lblNewLabel_1_7.setBounds(361, 150, 91, 14);
 		contentPane.add(lblNewLabel_1_7);
 		
 		JLabel lblNewLabel_1_8 = new JLabel("Correo Laboral");
@@ -133,17 +139,17 @@ public class frm_Promotores extends JFrame {
 		
 		txtApellidos = new JTextField();
 		txtApellidos.setColumns(10);
-		txtApellidos.setBounds(10, 113, 107, 20);
+		txtApellidos.setBounds(10, 113, 160, 20);
 		contentPane.add(txtApellidos);
 		
 		txtDireccion = new JTextField();
 		txtDireccion.setColumns(10);
-		txtDireccion.setBounds(127, 113, 107, 20);
+		txtDireccion.setBounds(180, 113, 126, 20);
 		contentPane.add(txtDireccion);
 		
 		txtCorreoper = new JTextField();
 		txtCorreoper.setColumns(10);
-		txtCorreoper.setBounds(252, 113, 107, 20);
+		txtCorreoper.setBounds(327, 113, 116, 20);
 		contentPane.add(txtCorreoper);
 		
 		txtCorreoCorp = new JTextField();
@@ -163,7 +169,7 @@ public class frm_Promotores extends JFrame {
 		
 		txtIdAgencia = new JTextField();
 		txtIdAgencia.setColumns(10);
-		txtIdAgencia.setBounds(10, 208, 107, 20);
+		txtIdAgencia.setBounds(361, 163, 69, 20);
 		contentPane.add(txtIdAgencia);
 		
 		JButton btnRegistrar = new JButton("REGISTRAR");
@@ -177,12 +183,16 @@ public class frm_Promotores extends JFrame {
 			}
 		});
 		btnRegistrar.setFont(new Font("Tahoma", Font.BOLD, 11));
-		btnRegistrar.setBounds(304, 227, 98, 23);
+		btnRegistrar.setBounds(222, 227, 113, 23);
 		contentPane.add(btnRegistrar);
 		
 		JButton btnCancelar = new JButton("CANCELAR");
+		btnCancelar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		btnCancelar.setFont(new Font("Tahoma", Font.BOLD, 11));
-		btnCancelar.setBounds(196, 227, 98, 23);
+		btnCancelar.setBounds(102, 227, 98, 23);
 		contentPane.add(btnCancelar);
 		
 		JLabel lblNewLabel_2 = new JLabel("ID");
@@ -194,6 +204,43 @@ public class frm_Promotores extends JFrame {
 		txtId.setBounds(10, 57, 37, 20);
 		contentPane.add(txtId);
 		txtId.setColumns(10);
+		
+		JSeparator separator = new JSeparator();
+		separator.setOrientation(SwingConstants.VERTICAL);
+		separator.setBounds(462, 11, 15, 233);
+		contentPane.add(separator);
+		
+		JLabel lblNewLabel_1_10 = new JLabel("ELIMINAR REGISTRO EXISTENTE");
+		lblNewLabel_1_10.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lblNewLabel_1_10.setBounds(479, 16, 186, 14);
+		contentPane.add(lblNewLabel_1_10);
+		
+		JLabel lblNewLabel_2_1 = new JLabel("ID PROMOTOR");
+		lblNewLabel_2_1.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lblNewLabel_2_1.setBounds(522, 60, 92, 14);
+		contentPane.add(lblNewLabel_2_1);
+		
+		txtIDPromotor = new JTextField();
+		txtIDPromotor.setColumns(10);
+		txtIDPromotor.setBounds(536, 82, 52, 20);
+		contentPane.add(txtIDPromotor);
+		
+		JButton btnDelete = new JButton("DELETE");
+		btnDelete.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\2290850_clean_delete_garbage_recycle bin_trash_icon.png"));
+		btnDelete.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				Promotores cr= new Promotores();
+				cr.delete(Integer.parseInt(txtIDPromotor.getText()));
+			}
+		});
+		btnDelete.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnDelete.setFont(new Font("Tahoma", Font.BOLD, 11));
+		btnDelete.setBounds(503, 131, 129, 52);
+		contentPane.add(btnDelete);
 	}
 
 }

@@ -95,5 +95,24 @@ public class Vehiculos {
 			
 		}
 	}
-	
+	 public void delete (String matricula) {
+			Connection dbConnection = null;
+			PreparedStatement pst = null;
+			String script = "DELETE FROM  tblvehiculos WHERE   matricula = ? ";
+			try {
+				dbConnection = conector.conectarBD();
+				pst = dbConnection.prepareStatement(script);
+				
+				pst.setString(1,matricula);
+				
+				int resp = JOptionPane.showConfirmDialog(null, "¿Desea eliminar el registro No. " + matricula  +" ? ");
+				
+				if (resp == JOptionPane.OK_OPTION) {
+					pst.executeUpdate();
+					JOptionPane.showConfirmDialog(null,"Registro No. "+matricula+" Eliminado Correctamente");
+				}
+				
+			} catch (SQLException e) {
+				System.out.println(e.getMessage());		}
+		}
 }

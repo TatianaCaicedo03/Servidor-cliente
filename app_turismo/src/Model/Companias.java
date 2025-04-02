@@ -10,7 +10,7 @@ import Controller.Conexion;
 
 public class Companias {
 	
-	
+	Conexion connector = new Conexion ();
 		public String razonsocial;
 		public String direccion;
 		public String correo;
@@ -68,7 +68,7 @@ public class Companias {
 		public void setWeb(String web) {
 			this.web = web;
 		}
-		Conexion connector = new Conexion ();
+		
 		
 		public void create ( String razonsocial, String direccion, String correo, String telefono,String fechacreacion, String web) {
 			Connection dbConnection = null;
@@ -92,5 +92,25 @@ public class Companias {
 			}
 			
 		}
+		 public void delete (int idcompañia) {
+				Connection dbConnection = null;
+				PreparedStatement pst = null;
+				String script = "DELETE FROM  tblcompanias WHERE idcompañia = ? ";
+				try {
+					dbConnection = connector.conectarBD();
+					pst = dbConnection.prepareStatement(script);
+					
+					pst.setInt(1,idcompañia);
+					
+					int resp = JOptionPane.showConfirmDialog(null, "¿Desea eliminar el registro No. " + idcompañia  +" ? ");
+					
+					if (resp == JOptionPane.OK_OPTION) {
+						pst.executeUpdate();
+						JOptionPane.showConfirmDialog(null,"Registro No. "+idcompañia+" Eliminado Correctamente");
+					}
+					
+				} catch (SQLException e) {
+					System.out.println(e.getMessage());		}
+			}
 
 }

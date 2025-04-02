@@ -20,6 +20,9 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JSeparator;
+import javax.swing.SwingConstants;
+import javax.swing.ImageIcon;
 
 public class frmOperadores extends JFrame {
 
@@ -33,7 +36,8 @@ public class frmOperadores extends JFrame {
 	private JTextField txtCorreo;
 	private JTextField txtTelefono;
 	private JTextField txtIdMatricula;
-
+	private JTextField txtOperador;
+	Operadores cr = new Operadores ();
 	/**
 	 * Launch the application.
 	 */
@@ -55,7 +59,7 @@ public class frmOperadores extends JFrame {
 	 */
 	public frmOperadores() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 706, 300);
+		setBounds(100, 100, 701, 319);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(223, 202, 240));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -66,7 +70,7 @@ public class frmOperadores extends JFrame {
 		JLabel lblNewLabel = new JLabel("REGISTRO DE OPERADORES ");
 		lblNewLabel.setBackground(new Color(255, 255, 255));
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 11));
-		lblNewLabel.setBounds(230, 11, 204, 19);
+		lblNewLabel.setBounds(142, 11, 204, 19);
 		contentPane.add(lblNewLabel);
 		
 		JLabel lbltipodoc = new JLabel("Tipo de documento");
@@ -85,7 +89,7 @@ public class frmOperadores extends JFrame {
 		contentPane.add(lblNewLabel_1_2);
 		
 		txtApellidos = new JTextField();
-		txtApellidos.setBounds(493, 73, 173, 20);
+		txtApellidos.setBounds(10, 132, 127, 20);
 		contentPane.add(txtApellidos);
 		txtApellidos.setColumns(10);
 		
@@ -110,47 +114,47 @@ public class frmOperadores extends JFrame {
 		
 		JLabel lblNewLabel_1_1_1 = new JLabel("Apellidos");
 		lblNewLabel_1_1_1.setFont(new Font("Tahoma", Font.BOLD, 11));
-		lblNewLabel_1_1_1.setBounds(533, 57, 133, 14);
+		lblNewLabel_1_1_1.setBounds(8, 118, 133, 14);
 		contentPane.add(lblNewLabel_1_1_1);
 		
 		JLabel lblNewLabel_1 = new JLabel("Direccion");
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 11));
-		lblNewLabel_1.setBounds(20, 118, 86, 14);
+		lblNewLabel_1.setBounds(151, 118, 86, 14);
 		contentPane.add(lblNewLabel_1);
 		
 		JLabel lblNewLabel_1_3 = new JLabel("Correo");
 		lblNewLabel_1_3.setFont(new Font("Tahoma", Font.BOLD, 11));
-		lblNewLabel_1_3.setBounds(200, 118, 69, 14);
+		lblNewLabel_1_3.setBounds(151, 163, 69, 14);
 		contentPane.add(lblNewLabel_1_3);
 		
 		JLabel lblNewLabel_1_4 = new JLabel("Telefono");
 		lblNewLabel_1_4.setFont(new Font("Tahoma", Font.BOLD, 11));
-		lblNewLabel_1_4.setBounds(348, 118, 86, 14);
+		lblNewLabel_1_4.setBounds(10, 163, 86, 14);
 		contentPane.add(lblNewLabel_1_4);
 		
 		JLabel lblNewLabel_1_5 = new JLabel("Matricula del vehiculo");
 		lblNewLabel_1_5.setFont(new Font("Tahoma", Font.BOLD, 11));
-		lblNewLabel_1_5.setBounds(520, 118, 133, 14);
+		lblNewLabel_1_5.setBounds(287, 118, 133, 14);
 		contentPane.add(lblNewLabel_1_5);
 		
 		txtDireccion = new JTextField();
 		txtDireccion.setColumns(10);
-		txtDireccion.setBounds(10, 132, 116, 20);
+		txtDireccion.setBounds(146, 132, 116, 20);
 		contentPane.add(txtDireccion);
 		
 		txtCorreo = new JTextField();
 		txtCorreo.setColumns(10);
-		txtCorreo.setBounds(146, 132, 133, 20);
+		txtCorreo.setBounds(146, 181, 133, 20);
 		contentPane.add(txtCorreo);
 		
 		txtTelefono = new JTextField();
 		txtTelefono.setColumns(10);
-		txtTelefono.setBounds(307, 132, 127, 20);
+		txtTelefono.setBounds(9, 181, 127, 20);
 		contentPane.add(txtTelefono);
 		
 		txtIdMatricula = new JTextField();
 		txtIdMatricula.setColumns(10);
-		txtIdMatricula.setBounds(493, 132, 187, 20);
+		txtIdMatricula.setBounds(283, 132, 187, 20);
 		contentPane.add(txtIdMatricula);
 		
 		JButton btnRegistrar = new JButton("REGISTRAR");
@@ -161,18 +165,56 @@ public class frmOperadores extends JFrame {
 		btnRegistrar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				Operadores cr = new Operadores ();
+				
 				cr.create(Integer.parseInt(txtTipoDoc.getText()),Integer.parseInt(txtNumeroDoc.getText()),txtNombres.getText(),txtApellidos.getText(),txtDireccion.getText(),txtCorreo.getText(),txtTelefono.getText(),txtIdMatricula.getText());
 				
 			}
 		});
 		btnRegistrar.setFont(new Font("Tahoma", Font.BOLD, 11));
-		btnRegistrar.setBounds(499, 196, 127, 23);
+		btnRegistrar.setBounds(343, 233, 127, 23);
 		contentPane.add(btnRegistrar);
 		
 		JButton btnCancelar = new JButton("CANCELAR");
+		btnCancelar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		btnCancelar.setFont(new Font("Tahoma", Font.BOLD, 11));
-		btnCancelar.setBounds(329, 196, 127, 23);
+		btnCancelar.setBounds(174, 233, 127, 23);
 		contentPane.add(btnCancelar);
+		
+		JSeparator separator = new JSeparator();
+		separator.setOrientation(SwingConstants.VERTICAL);
+		separator.setBounds(480, 11, 15, 280);
+		contentPane.add(separator);
+		
+		JLabel lblNewLabel_2_1 = new JLabel("ID OPERADOR");
+		lblNewLabel_2_1.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lblNewLabel_2_1.setBounds(505, 76, 92, 14);
+		contentPane.add(lblNewLabel_2_1);
+		
+		txtOperador = new JTextField();
+		txtOperador.setColumns(10);
+		txtOperador.setBounds(594, 73, 52, 20);
+		contentPane.add(txtOperador);
+		
+		JButton btnNewButton_1 = new JButton("DELETE");
+		btnNewButton_1.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\2290850_clean_delete_garbage_recycle bin_trash_icon.png"));
+		btnNewButton_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				cr.delete(Integer.parseInt(txtOperador.getText()));
+				
+			}
+			
+		});
+		btnNewButton_1.setFont(new Font("Tahoma", Font.BOLD, 11));
+		btnNewButton_1.setBounds(517, 119, 133, 47);
+		contentPane.add(btnNewButton_1);
+		
+		JLabel lblNewLabel_1_10 = new JLabel("ELIMINAR REGISTRO EXISTENTE");
+		lblNewLabel_1_10.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lblNewLabel_1_10.setBounds(489, 13, 186, 14);
+		contentPane.add(lblNewLabel_1_10);
 	}
 }

@@ -18,6 +18,9 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import javax.swing.JSeparator;
+import javax.swing.SwingConstants;
+import javax.swing.ImageIcon;
 
 public class frm_Companias extends JFrame {
 
@@ -29,7 +32,8 @@ public class frm_Companias extends JFrame {
 	private JTextField txtTelefono;
 	private JTextField txtFechacreac;
 	private JTextField txtWeb;
-
+	Companias cr = new Companias ();
+	private JTextField txtIDCompañia;
 	/**
 	 * Launch the application.
 	 */
@@ -51,7 +55,7 @@ public class frm_Companias extends JFrame {
 	 */
 	public frm_Companias() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 656, 266);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(205, 193, 227));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -126,10 +130,11 @@ public class frm_Companias extends JFrame {
 		contentPane.add(txtWeb);
 		
 		JButton btnRegistrar = new JButton("REGISTRAR");
+		btnRegistrar.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\2290866_documents_download_download files_file_files_icon.png"));
 		btnRegistrar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				Companias cr = new Companias ();
+				
 				cr.create(txtRazonSoc.getText(),txtDireccion.getText(),txtCorreo.getText(),txtTelefono.getText(),txtFechacreac.getText(),txtWeb.getText());
 			}
 		});
@@ -138,12 +143,45 @@ public class frm_Companias extends JFrame {
 			}
 		});
 		btnRegistrar.setFont(new Font("Tahoma", Font.BOLD, 11));
-		btnRegistrar.setBounds(319, 209, 104, 23);
+		btnRegistrar.setBounds(253, 170, 153, 48);
 		contentPane.add(btnRegistrar);
 		
-		JButton btnCancelar = new JButton("CANCELAR");
-		btnCancelar.setFont(new Font("Tahoma", Font.BOLD, 11));
-		btnCancelar.setBounds(223, 209, 89, 23);
-		contentPane.add(btnCancelar);
+		JSeparator separator = new JSeparator();
+		separator.setOrientation(SwingConstants.VERTICAL);
+		separator.setBounds(433, 0, 15, 233);
+		contentPane.add(separator);
+		
+		JLabel lblNewLabel_2_1 = new JLabel("ID COMPAÑIA");
+		lblNewLabel_2_1.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lblNewLabel_2_1.setBounds(444, 52, 92, 14);
+		contentPane.add(lblNewLabel_2_1);
+		
+		txtIDCompañia = new JTextField();
+		txtIDCompañia.setColumns(10);
+		txtIDCompañia.setBounds(532, 49, 52, 20);
+		contentPane.add(txtIDCompañia);
+		
+		JButton btnNewButton_1 = new JButton("DELETE");
+		btnNewButton_1.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\2290850_clean_delete_garbage_recycle bin_trash_icon.png"));
+		btnNewButton_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				cr.delete(Integer.parseInt(txtIDCompañia.getText()));
+			}
+		});
+		btnNewButton_1.setFont(new Font("Tahoma", Font.BOLD, 11));
+		btnNewButton_1.setBounds(476, 88, 128, 57);
+		contentPane.add(btnNewButton_1);
+		
+		JLabel lblNewLabel_1_6 = new JLabel("ELIMINAR REGISTRO EXISTENTE");
+		lblNewLabel_1_6.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lblNewLabel_1_6.setBounds(444, 11, 186, 14);
+		contentPane.add(lblNewLabel_1_6);
+		
+		JButton btnNewButton_2 = new JButton("CANCELAR");
+		btnNewButton_2.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\9027292_cancel_icon.png"));
+		btnNewButton_2.setFont(new Font("Tahoma", Font.BOLD, 11));
+		btnNewButton_2.setBounds(39, 168, 148, 53);
+		contentPane.add(btnNewButton_2);
 	}
 }

@@ -17,6 +17,9 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JSeparator;
+import javax.swing.SwingConstants;
+import javax.swing.ImageIcon;
 
 public class frm_Vehiculo extends JFrame {
 
@@ -29,7 +32,8 @@ public class frm_Vehiculo extends JFrame {
 	private JTextField txtNumeroMotor;
 	private JTextField txtCategoria;
 	private JTextField txtIdTipoTrans;
-
+	private JTextField txtIdMatricula;
+	Vehiculos  cr = new Vehiculos  ();	
 	/**
 	 * Launch the application.
 	 */
@@ -51,7 +55,7 @@ public class frm_Vehiculo extends JFrame {
 	 */
 	public frm_Vehiculo() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 609, 300);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(211, 194, 235));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -76,7 +80,7 @@ public class frm_Vehiculo extends JFrame {
 		
 		JLabel lblNewLabel_1_2 = new JLabel("Puestos");
 		lblNewLabel_1_2.setFont(new Font("Tahoma", Font.BOLD, 11));
-		lblNewLabel_1_2.setBounds(311, 48, 75, 14);
+		lblNewLabel_1_2.setBounds(277, 48, 75, 14);
 		contentPane.add(lblNewLabel_1_2);
 		
 		JLabel lblNewLabel_1_3 = new JLabel("Modelo");
@@ -91,7 +95,7 @@ public class frm_Vehiculo extends JFrame {
 		
 		JLabel lblNewLabel_1_5 = new JLabel("Categoria");
 		lblNewLabel_1_5.setFont(new Font("Tahoma", Font.BOLD, 11));
-		lblNewLabel_1_5.setBounds(299, 121, 75, 14);
+		lblNewLabel_1_5.setBounds(277, 121, 75, 14);
 		contentPane.add(lblNewLabel_1_5);
 		
 		JLabel lblNewLabel_1_6 = new JLabel("ID  tipo Transporte");
@@ -107,15 +111,15 @@ public class frm_Vehiculo extends JFrame {
 		btnRegistrar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				Vehiculos  cr = new Vehiculos  ();	
+				
 				cr.create(txtMatricula.getText(), txtMarca.getText(),Integer.parseInt(txtPuestos.getText()),txtModelo.getText(),Integer.parseInt(txtNumeroMotor.getText()),txtCategoria.getText(),Integer.parseInt(txtIdTipoTrans.getText()));
 			}
 		});
-		btnRegistrar.setBounds(311, 211, 107, 23);
+		btnRegistrar.setBounds(272, 211, 107, 23);
 		contentPane.add(btnRegistrar);
 		
 		JButton btnCancelar = new JButton("Cancelar ");
-		btnCancelar.setBounds(186, 211, 107, 23);
+		btnCancelar.setBounds(155, 211, 107, 23);
 		contentPane.add(btnCancelar);
 		
 		txtMatricula = new JTextField();
@@ -130,7 +134,7 @@ public class frm_Vehiculo extends JFrame {
 		
 		txtPuestos = new JTextField();
 		txtPuestos.setColumns(10);
-		txtPuestos.setBounds(299, 61, 86, 20);
+		txtPuestos.setBounds(277, 61, 86, 20);
 		contentPane.add(txtPuestos);
 		
 		txtModelo = new JTextField();
@@ -145,12 +149,45 @@ public class frm_Vehiculo extends JFrame {
 		
 		txtCategoria = new JTextField();
 		txtCategoria.setColumns(10);
-		txtCategoria.setBounds(288, 133, 86, 20);
+		txtCategoria.setBounds(277, 133, 86, 20);
 		contentPane.add(txtCategoria);
 		
 		txtIdTipoTrans = new JTextField();
 		txtIdTipoTrans.setColumns(10);
 		txtIdTipoTrans.setBounds(50, 195, 86, 20);
 		contentPane.add(txtIdTipoTrans);
+		
+		JSeparator separator = new JSeparator();
+		separator.setOrientation(SwingConstants.VERTICAL);
+		separator.setBounds(390, 0, 15, 261);
+		contentPane.add(separator);
+		
+		JLabel lblNewLabel_2_1 = new JLabel("MATRICULA");
+		lblNewLabel_2_1.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lblNewLabel_2_1.setBounds(460, 64, 92, 14);
+		contentPane.add(lblNewLabel_2_1);
+		
+		txtIdMatricula = new JTextField();
+		txtIdMatricula.setColumns(10);
+		txtIdMatricula.setBounds(470, 78, 52, 20);
+		contentPane.add(txtIdMatricula);
+		
+		JButton btnNewButton_1 = new JButton("DELETE");
+		btnNewButton_1.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\2290850_clean_delete_garbage_recycle bin_trash_icon.png"));
+		btnNewButton_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				cr.delete(txtIdMatricula.getText());
+				
+			}
+		});
+		btnNewButton_1.setFont(new Font("Tahoma", Font.BOLD, 11));
+		btnNewButton_1.setBounds(433, 115, 137, 57);
+		contentPane.add(btnNewButton_1);
+		
+		JLabel lblNewLabel_1_10_1 = new JLabel("ELIMINAR REGISTRO EXISTENTE");
+		lblNewLabel_1_10_1.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lblNewLabel_1_10_1.setBounds(397, 11, 186, 14);
+		contentPane.add(lblNewLabel_1_10_1);
 	}
 }

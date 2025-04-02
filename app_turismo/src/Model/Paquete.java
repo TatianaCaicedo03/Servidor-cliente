@@ -1,7 +1,14 @@
 package Model;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+import javax.swing.JOptionPane;
+
+import Controller.Conexion;
+
 public class Paquete {
-	public int codigoventa;
 	public int iddestino;
 	public int idorigen;
 	public String fechaventa;
@@ -15,11 +22,12 @@ public class Paquete {
 	public int idmedio;
 	public String precio;
 	public String idvehiculo;
-	public Paquete(int codigoventa, int iddestino, int idorigen, String fechaventa, String horaventa, String horasalida,
+	Conexion connector = new Conexion ();
+	
+	public Paquete(int iddestino, int idorigen, String fechaventa, String horaventa, String horasalida,
 			String fechaejecucion, String observacion, int idpromotor, int idcliente, int idaperador, int idmedio,
 			String precio, String idvehiculo) {
 		super();
-		this.codigoventa = codigoventa;
 		this.iddestino = iddestino;
 		this.idorigen = idorigen;
 		this.fechaventa = fechaventa;
@@ -34,12 +42,13 @@ public class Paquete {
 		this.precio = precio;
 		this.idvehiculo = idvehiculo;
 	}
-	public int getCodigoventa() {
-		return codigoventa;
+
+
+	public Paquete() {
+		// TODO Auto-generated constructor stub
 	}
-	public void setCodigoventa(int codigoventa) {
-		this.codigoventa = codigoventa;
-	}
+
+
 	public int getIddestino() {
 		return iddestino;
 	}
@@ -117,6 +126,57 @@ public class Paquete {
 	}
 	public void setIdvehiculo(String idvehiculo) {
 		this.idvehiculo = idvehiculo;
+	}
+
+	public void create (int iddestino, int idorigen, String fechaventa, String horaventa, String horasalida,
+String fechaejecucion, String observacion, int idpromotor, int idcliente, int idaperador, int idmedio,
+			String precio, String idvehiculo){
+		Connection dbConnection = null;
+		PreparedStatement pst = null;
+		String script = "INSERT INTO tblpaquetes (iddestino,idorigen,fechaventa,horaventa,horasalida,fechaejecucion,observacion,idpromotor,idcliente,idaperador,idmedio,precio,idvehiculo) values (?,?,?,?,?,?,?,?,?,?,?,?,?)";
+		try {
+			dbConnection = connector.conectarBD();
+			pst = dbConnection.prepareStatement(script);
+			pst.setLong(1,iddestino);
+			pst.setLong(2,idorigen);
+			pst.setString(3,fechaventa);
+			pst.setString(4,horaventa);
+			pst.setString(5,horasalida);
+			pst.setString(6,fechaejecucion);
+			pst.setString(7,observacion);
+			pst.setLong(8,idpromotor);
+			pst.setLong(9,idcliente);
+			pst.setLong(10,idaperador);
+			pst.setLong(11,idmedio);
+			pst.setString(12,precio);
+			pst.setString(13,idvehiculo);
+			pst.executeUpdate();
+			JOptionPane.showConfirmDialog(null, "Registro con exito");
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
+		
+		
+	}
+	public void delete (int codigoventa) {
+		Connection dbConnection = null;
+		PreparedStatement pst = null;
+		String script = "DELETE FROM  tblpaquetes WHERE codigoventa = ? ";
+		try {
+			dbConnection = connector.conectarBD();
+			pst = dbConnection.prepareStatement(script);
+			
+			pst.setInt(1,codigoventa);
+			
+			int resp = JOptionPane.showConfirmDialog(null, "¿Desea eliminar el registro No. " + codigoventa  +" ? ");
+			
+			if (resp == JOptionPane.OK_OPTION) {
+				pst.executeUpdate();
+				JOptionPane.showConfirmDialog(null,"Registro No. "+codigoventa+" Eliminado Correctamente");
+			}
+			
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());		}
 	}
 	
 }

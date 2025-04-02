@@ -55,5 +55,24 @@ public class Tipomedios {
 			
 		}
 	}
-	
+	 public void delete (int idtipomedios) {
+			Connection dbConnection = null;
+			PreparedStatement pst = null;
+			String script = "DELETE FROM  tbltipomedios WHERE idtipomedios = ? ";
+			try {
+				dbConnection = conector.conectarBD();
+				pst = dbConnection.prepareStatement(script);
+				
+				pst.setInt(1,idtipomedios);
+				
+				int resp = JOptionPane.showConfirmDialog(null, "¿Desea eliminar el registro No. " + idtipomedios  +" ? ");
+				
+				if (resp == JOptionPane.OK_OPTION) {
+					pst.executeUpdate();
+					JOptionPane.showConfirmDialog(null,"Registro No. "+idtipomedios+" Eliminado Correctamente");
+				}
+				
+			} catch (SQLException e) {
+				System.out.println(e.getMessage());		}
+		}
 }
