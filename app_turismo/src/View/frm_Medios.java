@@ -13,6 +13,8 @@ import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JSeparator;
@@ -48,8 +50,9 @@ public class frm_Medios extends JFrame {
 	 * Create the frame.
 	 */
 	public frm_Medios() {
+		setAlwaysOnTop(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 593, 325);
+		setBounds(100, 100, 706, 325);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(211, 194, 235));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -74,7 +77,7 @@ public class frm_Medios extends JFrame {
 		
 		JLabel lblNewLabel_1_2 = new JLabel("ID Tipo Medios");
 		lblNewLabel_1_2.setFont(new Font("Tahoma", Font.BOLD, 11));
-		lblNewLabel_1_2.setBounds(86, 128, 93, 14);
+		lblNewLabel_1_2.setBounds(10, 128, 93, 14);
 		contentPane.add(lblNewLabel_1_2);
 		
 		txtNombre = new JTextField();
@@ -89,7 +92,7 @@ public class frm_Medios extends JFrame {
 		
 		txtIDMedios = new JTextField();
 		txtIDMedios.setColumns(10);
-		txtIDMedios.setBounds(81, 153, 111, 20);
+		txtIDMedios.setBounds(11, 152, 111, 20);
 		contentPane.add(txtIDMedios);
 		
 		JButton btnRegistrar = new JButton("REGISTRAR");
@@ -102,7 +105,7 @@ public class frm_Medios extends JFrame {
 			}
 		});
 		btnRegistrar.setFont(new Font("Tahoma", Font.BOLD, 11));
-		btnRegistrar.setBounds(11, 225, 159, 50);
+		btnRegistrar.setBounds(162, 225, 159, 50);
 		contentPane.add(btnRegistrar);
 		
 		JSeparator separator = new JSeparator();
@@ -110,19 +113,19 @@ public class frm_Medios extends JFrame {
 		separator.setBounds(359, 11, 15, 276);
 		contentPane.add(separator);
 		
-		JLabel lblNewLabel_1_10 = new JLabel("ELIMINAR REGISTRO EXISTENTE");
+		JLabel lblNewLabel_1_10 = new JLabel("OPCIONES DE REGISTROS  EXISTENTES");
 		lblNewLabel_1_10.setFont(new Font("Tahoma", Font.BOLD, 11));
-		lblNewLabel_1_10.setBounds(366, 26, 186, 14);
+		lblNewLabel_1_10.setBounds(379, 18, 230, 14);
 		contentPane.add(lblNewLabel_1_10);
 		
 		JLabel lblNewLabel_2_1 = new JLabel("ID MEDIO");
 		lblNewLabel_2_1.setFont(new Font("Tahoma", Font.BOLD, 11));
-		lblNewLabel_2_1.setBounds(408, 79, 92, 39);
+		lblNewLabel_2_1.setBounds(373, 64, 92, 39);
 		contentPane.add(lblNewLabel_2_1);
 		
 		txtMedio = new JTextField();
 		txtMedio.setColumns(10);
-		txtMedio.setBounds(407, 111, 52, 20);
+		txtMedio.setBounds(445, 73, 52, 20);
 		contentPane.add(txtMedio);
 		
 		JButton btnDelete = new JButton("DELETE");
@@ -134,14 +137,41 @@ public class frm_Medios extends JFrame {
 			}
 		});
 		btnDelete.setFont(new Font("Tahoma", Font.BOLD, 11));
-		btnDelete.setBounds(371, 161, 129, 50);
+		btnDelete.setBounds(396, 110, 129, 50);
 		contentPane.add(btnDelete);
 		
-		JButton btnNewButton_2 = new JButton("CANCELAR");
-		btnNewButton_2.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\9027292_cancel_icon.png"));
-		btnNewButton_2.setFont(new Font("Tahoma", Font.BOLD, 11));
-		btnNewButton_2.setBounds(197, 224, 148, 53);
-		contentPane.add(btnNewButton_2);
+		
+		JButton btnNewButton_3 = new JButton("BUSCAR");
+		btnNewButton_3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnNewButton_3.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				cr.Read(Integer.parseInt(txtMedio.getText()), txtNombre, txtObservacion,txtIDMedios);
+			}
+		});
+		btnNewButton_3.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\613531_find_glass_magnifying_search_zoom_icon.png"));
+		btnNewButton_3.setFont(new Font("Tahoma", Font.BOLD, 11));
+		btnNewButton_3.setBounds(379, 170, 146, 45);
+		contentPane.add(btnNewButton_3); 
+		
+		
+		JButton btnUpdate = new JButton("ACTUALIZAR");
+		btnUpdate.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				cr.Update(Integer.parseInt(txtMedio.getText()),txtNombre.getText(),txtObservacion.getText(),Integer.parseInt(txtIDMedios.getText()));
+			}
+		});
+		btnUpdate.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\592600_arrow_cycle_interface_update_icon.png"));
+		btnUpdate.setFont(new Font("Tahoma", Font.BOLD, 11));
+		btnUpdate.setBounds(373, 226, 172, 48);
+		contentPane.add(btnUpdate);
+		
+		
+		
 	}
 
 }

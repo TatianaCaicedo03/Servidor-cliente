@@ -51,7 +51,7 @@ public class frmTipotransporte extends JFrame {
 	 */
 	public frmTipotransporte() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 453, 224);
+		setBounds(100, 100, 594, 285);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(198, 184, 216));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -79,7 +79,13 @@ public class frmTipotransporte extends JFrame {
 		contentPane.add(txtObservacion);
 		txtObservacion.setColumns(10);
 		
-		JButton btnRegistar = new JButton("Registrar");
+		JButton btnRegistar = new JButton("REGISTRAR");
+		btnRegistar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnRegistar.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\2290866_documents_download_download files_file_files_icon.png"));
+		btnRegistar.setFont(new Font("Tahoma", Font.BOLD, 11));
 		btnRegistar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -90,16 +96,8 @@ public class frmTipotransporte extends JFrame {
 				
 			
 		});
-		btnRegistar.setBounds(123, 151, 89, 23);
+		btnRegistar.setBounds(54, 149, 157, 47);
 		contentPane.add(btnRegistar);
-		
-		JButton btnCancelar = new JButton("Cancelar");
-		btnCancelar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		btnCancelar.setBounds(9, 151, 89, 23);
-		contentPane.add(btnCancelar);
 		
 		JLabel lblNewLabel_2 = new JLabel("TIPO DE TRANSPORTE");
 		lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 11));
@@ -108,22 +106,22 @@ public class frmTipotransporte extends JFrame {
 		
 		JSeparator separator = new JSeparator();
 		separator.setOrientation(SwingConstants.VERTICAL);
-		separator.setBounds(224, 0, 15, 185);
+		separator.setBounds(284, 0, 15, 235);
 		contentPane.add(separator);
 		
-		JLabel lblNewLabel_1_10 = new JLabel("ELIMINAR REGISTRO EXISTENTE");
+		JLabel lblNewLabel_1_10 = new JLabel("OPCIONES DE REGISTROS  EXISTENTES");
 		lblNewLabel_1_10.setFont(new Font("Tahoma", Font.BOLD, 11));
-		lblNewLabel_1_10.setBounds(241, 11, 186, 14);
+		lblNewLabel_1_10.setBounds(319, 11, 255, 14);
 		contentPane.add(lblNewLabel_1_10);
 		
 		JLabel lblNewLabel_2_1 = new JLabel("ID TIPO TRANSPORTE");
 		lblNewLabel_2_1.setFont(new Font("Tahoma", Font.BOLD, 11));
-		lblNewLabel_2_1.setBounds(263, 49, 135, 14);
+		lblNewLabel_2_1.setBounds(309, 49, 135, 14);
 		contentPane.add(lblNewLabel_2_1);
 		
 		txtIDTransporte = new JTextField();
 		txtIDTransporte.setColumns(10);
-		txtIDTransporte.setBounds(296, 66, 52, 20);
+		txtIDTransporte.setBounds(441, 46, 52, 20);
 		contentPane.add(txtIDTransporte);
 		
 		JButton btnNewButton_1 = new JButton("DELETE");
@@ -135,7 +133,41 @@ public class frmTipotransporte extends JFrame {
 			}
 		});
 		btnNewButton_1.setFont(new Font("Tahoma", Font.BOLD, 11));
-		btnNewButton_1.setBounds(273, 108, 125, 45);
+		btnNewButton_1.setBounds(309, 73, 125, 45);
 		contentPane.add(btnNewButton_1);
+		
+		
+		JButton btnNewButton_3 = new JButton("BUSCAR");
+		btnNewButton_3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnNewButton_3.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				cr.Read(Integer.parseInt(txtIDTransporte.getText()), txtNombre, txtObservacion);
+			}
+		});
+		btnNewButton_3.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\613531_find_glass_magnifying_search_zoom_icon.png"));
+		btnNewButton_3.setFont(new Font("Tahoma", Font.BOLD, 11));
+		btnNewButton_3.setBounds(309, 129, 146, 45);
+		contentPane.add(btnNewButton_3); 
+		
+		
+		JButton btnUpdate = new JButton("ACTUALIZAR");
+		btnUpdate.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				cr.Update(Integer.parseInt(txtIDTransporte.getText()),txtNombre.getText(),txtObservacion.getText());
+			}
+		});
+		btnUpdate.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\592600_arrow_cycle_interface_update_icon.png"));
+		btnUpdate.setFont(new Font("Tahoma", Font.BOLD, 11));
+		btnUpdate.setBounds(309, 187, 172, 48);
+		contentPane.add(btnUpdate);
+		
+		
+		
+		
 	}
 }

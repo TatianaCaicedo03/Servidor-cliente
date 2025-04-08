@@ -2,9 +2,11 @@ package Model;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 import Controller.Conexion;
 
@@ -74,6 +76,7 @@ public class Vehiculos {
 	}
 	
 	Conexion conector = new Conexion ();
+	//CREATE
 	public void create (String matricula, String marca, int puestos, String modelo, int numeromotor, String categoria,int idtipo) {
 		Connection dbConnection = null;
 		PreparedStatement pst = null;
@@ -95,6 +98,7 @@ public class Vehiculos {
 			
 		}
 	}
+	//DELTE
 	 public void delete (String matricula) {
 			Connection dbConnection = null;
 			PreparedStatement pst = null;
@@ -115,4 +119,76 @@ public class Vehiculos {
 			} catch (SQLException e) {
 				System.out.println(e.getMessage());		}
 		}
+	//READ
+	 public void Read (String matricula, JTextField marca,JTextField puestos,JTextField modelo,JTextField numeromotor,JTextField categoria,JTextField idtipo) {
+			Connection dbConnection = null;
+			PreparedStatement pst = null;
+			
+			String script = "SELECT * FROM tblvehiculos WHERE matricula = ? ";
+			
+			try {
+				dbConnection = conector.conectarBD();
+				pst = dbConnection.prepareStatement(script);
+				pst.setString(1, matricula);
+				ResultSet rs = pst.executeQuery();
+				
+				while (rs.next()) {
+					marca.setText(rs.getString(2));
+					puestos.setText(rs.getString(3));
+					modelo.setText(rs.getString(4));
+					numeromotor.setText(rs.getString(5));
+					categoria.setText(rs.getString(6));
+					idtipo.setText(rs.getString(7));
+					
+				}
+					
+					
+			} catch (SQLException e) {
+				System.out.println(e.getMessage());		
+			}
+			
+				
+	 }
+	 
+		                                                        // UPDATE
+		public void Update(String matricula, String marca, int puestos, String modelo, int numeromotor, String categoria,int idtipo) {
+			Connection dbConnection = null;
+			PreparedStatement pst = null;
+			String script = "UPDATE tblvehiculos SET  marca = ?,  puestos = ?, modelo = ?, numeromotor = ?, categoria = ?, idtipo = ? WHERE matricula = ?";
+
+			try {
+				dbConnection = conector.conectarBD();
+				pst = dbConnection.prepareStatement(script);
+				pst.setString(1, marca);
+				pst.setInt(2, puestos);
+				pst.setString(3, modelo);
+				pst.setInt(4, numeromotor);
+				pst.setString(5, categoria);
+				pst.setInt(6, idtipo);
+				pst.setString(7, matricula);
+
+				pst.executeUpdate();
+				int resp = JOptionPane.showConfirmDialog(null,
+						"¿Desea Actualizar el registro No. " + matricula + " ? ");
+
+				if (resp == JOptionPane.OK_OPTION) {
+					pst.executeUpdate();
+					JOptionPane.showConfirmDialog(null,
+							"El Registro No. " + matricula + " Se a Actualizado Correctamente");
+				}
+
+			} catch (SQLException e) {
+				System.out.println(e.getMessage());
+			}
+		}
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
 }

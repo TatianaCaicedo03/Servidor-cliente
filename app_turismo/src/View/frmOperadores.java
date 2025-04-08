@@ -59,7 +59,7 @@ public class frmOperadores extends JFrame {
 	 */
 	public frmOperadores() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 701, 319);
+		setBounds(100, 100, 907, 319);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(223, 202, 240));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -158,6 +158,7 @@ public class frmOperadores extends JFrame {
 		contentPane.add(txtIdMatricula);
 		
 		JButton btnRegistrar = new JButton("REGISTRAR");
+		btnRegistrar.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\2290866_documents_download_download files_file_files_icon.png"));
 		btnRegistrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
@@ -171,17 +172,8 @@ public class frmOperadores extends JFrame {
 			}
 		});
 		btnRegistrar.setFont(new Font("Tahoma", Font.BOLD, 11));
-		btnRegistrar.setBounds(343, 233, 127, 23);
+		btnRegistrar.setBounds(283, 217, 187, 39);
 		contentPane.add(btnRegistrar);
-		
-		JButton btnCancelar = new JButton("CANCELAR");
-		btnCancelar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		btnCancelar.setFont(new Font("Tahoma", Font.BOLD, 11));
-		btnCancelar.setBounds(174, 233, 127, 23);
-		contentPane.add(btnCancelar);
 		
 		JSeparator separator = new JSeparator();
 		separator.setOrientation(SwingConstants.VERTICAL);
@@ -209,12 +201,44 @@ public class frmOperadores extends JFrame {
 			
 		});
 		btnNewButton_1.setFont(new Font("Tahoma", Font.BOLD, 11));
-		btnNewButton_1.setBounds(517, 119, 133, 47);
+		btnNewButton_1.setBounds(695, 119, 133, 47);
 		contentPane.add(btnNewButton_1);
 		
-		JLabel lblNewLabel_1_10 = new JLabel("ELIMINAR REGISTRO EXISTENTE");
+		JLabel lblNewLabel_1_10 = new JLabel("OPCIONES REGISTROS  EXISTENTES");
 		lblNewLabel_1_10.setFont(new Font("Tahoma", Font.BOLD, 11));
-		lblNewLabel_1_10.setBounds(489, 13, 186, 14);
+		lblNewLabel_1_10.setBounds(543, 13, 272, 14);
 		contentPane.add(lblNewLabel_1_10);
+		
+		
+		JButton btnNewButton_3 = new JButton("BUSCAR");
+		btnNewButton_3.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				cr.Read(Integer.parseInt(txtOperador.getText()), txtTipoDoc, txtNumeroDoc, txtNombres, txtApellidos, txtDireccion, txtCorreo, txtTelefono, txtIdMatricula);
+			}
+		});
+		btnNewButton_3.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\613531_find_glass_magnifying_search_zoom_icon.png"));
+		btnNewButton_3.setFont(new Font("Tahoma", Font.BOLD, 11));
+		btnNewButton_3.setBounds(505, 118, 153, 48);
+		contentPane.add(btnNewButton_3); 
+		
+		
+		JButton btnUpdate = new JButton("ACTUALIZAR");
+		btnUpdate.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				cr.Update(Integer.parseInt(txtOperador.getText()),Integer.parseInt(txtTipoDoc.getText()),Integer.parseInt(txtNumeroDoc.getText()),txtNombres.getText(),txtApellidos.getText(),txtDireccion.getText(),txtCorreo.getText(),txtTelefono.getText(),txtIdMatricula.getText());
+			}
+		});
+		btnUpdate.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\592600_arrow_cycle_interface_update_icon.png"));
+		btnUpdate.setFont(new Font("Tahoma", Font.BOLD, 11));
+		btnUpdate.setBounds(678, 195, 172, 48);
+		contentPane.add(btnUpdate);
+		
+		
+		
+		
+		
+		
 	}
 }

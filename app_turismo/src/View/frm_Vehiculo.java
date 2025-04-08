@@ -55,7 +55,7 @@ public class frm_Vehiculo extends JFrame {
 	 */
 	public frm_Vehiculo() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 609, 300);
+		setBounds(100, 100, 798, 340);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(211, 194, 235));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -104,6 +104,8 @@ public class frm_Vehiculo extends JFrame {
 		contentPane.add(lblNewLabel_1_6);
 		
 		JButton btnRegistrar = new JButton("REGISTAR");
+		btnRegistrar.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\2290866_documents_download_download files_file_files_icon.png"));
+		btnRegistrar.setFont(new Font("Tahoma", Font.BOLD, 11));
 		btnRegistrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
@@ -115,12 +117,9 @@ public class frm_Vehiculo extends JFrame {
 				cr.create(txtMatricula.getText(), txtMarca.getText(),Integer.parseInt(txtPuestos.getText()),txtModelo.getText(),Integer.parseInt(txtNumeroMotor.getText()),txtCategoria.getText(),Integer.parseInt(txtIdTipoTrans.getText()));
 			}
 		});
-		btnRegistrar.setBounds(272, 211, 107, 23);
+		btnRegistrar.setBounds(215, 249, 152, 41);
 		contentPane.add(btnRegistrar);
 		
-		JButton btnCancelar = new JButton("Cancelar ");
-		btnCancelar.setBounds(155, 211, 107, 23);
-		contentPane.add(btnCancelar);
 		
 		txtMatricula = new JTextField();
 		txtMatricula.setBounds(29, 61, 86, 20);
@@ -182,12 +181,45 @@ public class frm_Vehiculo extends JFrame {
 			}
 		});
 		btnNewButton_1.setFont(new Font("Tahoma", Font.BOLD, 11));
-		btnNewButton_1.setBounds(433, 115, 137, 57);
+		btnNewButton_1.setBounds(592, 177, 137, 57);
 		contentPane.add(btnNewButton_1);
 		
 		JLabel lblNewLabel_1_10_1 = new JLabel("ELIMINAR REGISTRO EXISTENTE");
 		lblNewLabel_1_10_1.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lblNewLabel_1_10_1.setBounds(397, 11, 186, 14);
 		contentPane.add(lblNewLabel_1_10_1);
+		
+		
+		JButton btnNewButton_3 = new JButton("BUSCAR");
+		btnNewButton_3.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				cr.Read(txtIdMatricula.getText(), txtMarca, txtPuestos, txtModelo, txtNumeroMotor, txtCategoria, txtIdTipoTrans);
+			}
+		});
+		btnNewButton_3.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\613531_find_glass_magnifying_search_zoom_icon.png"));
+		btnNewButton_3.setFont(new Font("Tahoma", Font.BOLD, 11));
+		btnNewButton_3.setBounds(592, 48, 153, 48);
+		contentPane.add(btnNewButton_3); 
+		
+		
+		JButton btnUpdate = new JButton("ACTUALIZAR");
+		btnUpdate.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				cr.Update(txtMatricula.getText(), txtMarca.getText(),Integer.parseInt(txtPuestos.getText()),txtModelo.getText(),Integer.parseInt(txtNumeroMotor.getText()),txtCategoria.getText(),Integer.parseInt(txtIdTipoTrans.getText()));
+			}
+		});
+		btnUpdate.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\592600_arrow_cycle_interface_update_icon.png"));
+		btnUpdate.setFont(new Font("Tahoma", Font.BOLD, 11));
+		btnUpdate.setBounds(592, 119, 172, 48);
+		contentPane.add(btnUpdate);
+		
+		
+		
+		
+		
+		
 	}
+
 }

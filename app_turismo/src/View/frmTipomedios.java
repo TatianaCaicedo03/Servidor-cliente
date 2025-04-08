@@ -56,7 +56,7 @@ public class frmTipomedios extends JFrame {
 		setBackground(new Color(185, 173, 209));
 		setTitle("Tipo Medios");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 507, 228);
+		setBounds(100, 100, 730, 255);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(185, 173, 209));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -81,7 +81,9 @@ public class frmTipomedios extends JFrame {
 		contentPane.add(txtObservacion);
 		txtObservacion.setColumns(10);
 		
-		JButton btnRegistrar = new JButton("Registrar");
+		JButton btnRegistrar = new JButton("REGISTRAR");
+		 btnRegistrar.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\2290866_documents_download_download files_file_files_icon.png"));
+		 btnRegistrar.setFont(new Font("Tahoma", Font.BOLD, 11));
 		btnRegistrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
@@ -94,12 +96,8 @@ public class frmTipomedios extends JFrame {
 				cr.create(txtNombre.getText(),txtObservacion.getText());
 			}
 		});
-		btnRegistrar.setBounds(34, 155, 89, 23);
+		btnRegistrar.setBounds(10, 156, 164, 44);
 		contentPane.add(btnRegistrar);
-		
-		JButton btnCancelar = new JButton("Cancelar");
-		btnCancelar.setBounds(147, 155, 89, 23);
-		contentPane.add(btnCancelar);
 		
 		txtNombre = new JTextField();
 		txtNombre.setBounds(73, 47, 125, 20);
@@ -108,7 +106,7 @@ public class frmTipomedios extends JFrame {
 		
 		JSeparator separator = new JSeparator();
 		separator.setOrientation(SwingConstants.VERTICAL);
-		separator.setBounds(246, 0, 15, 189);
+		separator.setBounds(342, 0, 15, 200);
 		contentPane.add(separator);
 		
 		JLabel lblRegistroDeTipo = new JLabel("REGISTRO DE TIPO DE MEDIOS");
@@ -116,19 +114,19 @@ public class frmTipomedios extends JFrame {
 		lblRegistroDeTipo.setBounds(20, 11, 274, 25);
 		contentPane.add(lblRegistroDeTipo);
 		
-		JLabel lblNewLabel_1_10 = new JLabel("ELIMINAR REGISTRO EXISTENTE");
+		JLabel lblNewLabel_1_10 = new JLabel("OPCIONES DE REGISTROS EXISTENTES");
 		lblNewLabel_1_10.setFont(new Font("Tahoma", Font.BOLD, 11));
-		lblNewLabel_1_10.setBounds(268, 16, 186, 14);
+		lblNewLabel_1_10.setBounds(434, 16, 230, 14);
 		contentPane.add(lblNewLabel_1_10);
 		
 		JLabel lblNewLabel_2_1 = new JLabel("ID MEDIOS");
 		lblNewLabel_2_1.setFont(new Font("Tahoma", Font.BOLD, 11));
-		lblNewLabel_2_1.setBounds(271, 75, 92, 14);
+		lblNewLabel_2_1.setBounds(431, 65, 92, 14);
 		contentPane.add(lblNewLabel_2_1);
 		
 		txtMedios = new JTextField();
 		txtMedios.setColumns(10);
-		txtMedios.setBounds(356, 72, 52, 20);
+		txtMedios.setBounds(548, 62, 52, 20);
 		contentPane.add(txtMedios);
 		
 		JButton btnDelete = new JButton("DELETE");
@@ -140,7 +138,36 @@ public class frmTipomedios extends JFrame {
 			}
 		});
 		btnDelete.setFont(new Font("Tahoma", Font.BOLD, 11));
-		btnDelete.setBounds(295, 112, 128, 45);
+		btnDelete.setBounds(367, 102, 128, 45);
 		contentPane.add(btnDelete);
+		
+		
+		JButton btnNewButton_3 = new JButton("BUSCAR");
+		btnNewButton_3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnNewButton_3.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				cr.Read(Integer.parseInt(txtMedios.getText()), txtNombre, txtObservacion);
+			}
+		});
+		btnNewButton_3.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\613531_find_glass_magnifying_search_zoom_icon.png"));
+		btnNewButton_3.setFont(new Font("Tahoma", Font.BOLD, 11));
+		btnNewButton_3.setBounds(526, 102, 146, 45);
+		contentPane.add(btnNewButton_3); 
+		
+		JButton btnUpdate = new JButton("ACTUALIZAR");
+		btnUpdate.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				cr.Update(Integer.parseInt(txtMedios.getText()),txtNombre.getText(),txtObservacion.getText());
+			}
+		});
+		btnUpdate.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\592600_arrow_cycle_interface_update_icon.png"));
+		btnUpdate.setFont(new Font("Tahoma", Font.BOLD, 11));
+		btnUpdate.setBounds(428, 154, 172, 48);
+		contentPane.add(btnUpdate);
 	}
 }

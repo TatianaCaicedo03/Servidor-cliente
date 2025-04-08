@@ -62,7 +62,7 @@ public class frm_Agencias extends JFrame {
 	 */
 	public frm_Agencias() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 603, 262);
+		setBounds(100, 100, 766, 291);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(205, 193, 227));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -150,17 +150,17 @@ public class frm_Agencias extends JFrame {
 			}
 		});
 		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 11));
-		btnNewButton.setBounds(216, 164, 165, 53);
+		btnNewButton.setBounds(216, 187, 165, 53);
 		contentPane.add(btnNewButton);
 		
 		JSeparator separator = new JSeparator();
 		separator.setOrientation(SwingConstants.VERTICAL);
-		separator.setBounds(391, 8, 15, 209);
+		separator.setBounds(391, 0, 15, 252);
 		contentPane.add(separator);
 		
-		JLabel lblNewLabel_1 = new JLabel("ELIMINAR REGISTRO EXISTENTE");
+		JLabel lblNewLabel_1 = new JLabel("OPCIONES DE REGISTROS EXISTENTES");
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 11));
-		lblNewLabel_1.setBounds(401, 11, 186, 14);
+		lblNewLabel_1.setBounds(442, 11, 239, 14);
 		contentPane.add(lblNewLabel_1);
 		
 		JLabel lblNewLabel_2 = new JLabel("ID AGENCIA");
@@ -169,7 +169,7 @@ public class frm_Agencias extends JFrame {
 		contentPane.add(lblNewLabel_2);
 		
 		txtIdAgencia = new JTextField();
-		txtIdAgencia.setBounds(463, 72, 52, 20);
+		txtIdAgencia.setBounds(520, 55, 52, 20);
 		contentPane.add(txtIdAgencia);
 		txtIdAgencia.setColumns(10);
 		
@@ -183,13 +183,37 @@ public class frm_Agencias extends JFrame {
 			}
 		});
 		btnNewButton_1.setFont(new Font("Tahoma", Font.BOLD, 11));
-		btnNewButton_1.setBounds(416, 128, 148, 55);
+		btnNewButton_1.setBounds(592, 186, 148, 55);
 		contentPane.add(btnNewButton_1);
 		
-		JButton btnNewButton_2 = new JButton("CANCELAR");
-		btnNewButton_2.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\9027292_cancel_icon.png"));
-		btnNewButton_2.setFont(new Font("Tahoma", Font.BOLD, 11));
-		btnNewButton_2.setBounds(20, 164, 148, 53);
-		contentPane.add(btnNewButton_2);
+		JButton btnNewButton_3 = new JButton("BUSCAR");
+		btnNewButton_3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnNewButton_3.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				cr.Read(Integer.parseInt(txtIdAgencia.getText()), txtNombre, txtDireccion, txtCorreo, txtTelefono, txtWeb, txtIdCompania);
+			}
+		});
+		btnNewButton_3.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\613531_find_glass_magnifying_search_zoom_icon.png"));
+		btnNewButton_3.setFont(new Font("Tahoma", Font.BOLD, 11));
+		btnNewButton_3.setBounds(587, 58, 153, 48);
+		contentPane.add(btnNewButton_3); 
+		
+		JButton btnUpdate = new JButton("ACTUALIZAR");
+		btnUpdate.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				cr.Update(Integer.parseInt(txtIdAgencia.getText()),txtNombre.getText(),txtDireccion.getText(),txtCorreo.getText(),Integer.parseInt(txtTelefono.getText()),txtWeb.getText(),Integer.parseInt(txtIdCompania.getText()));
+			}
+		});
+		btnUpdate.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\592600_arrow_cycle_interface_update_icon.png"));
+		btnUpdate.setFont(new Font("Tahoma", Font.BOLD, 11));
+		btnUpdate.setBounds(568, 120, 172, 48);
+		contentPane.add(btnUpdate);
+		
 	}
+	
 }
