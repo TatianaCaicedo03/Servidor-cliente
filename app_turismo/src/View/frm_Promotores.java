@@ -174,6 +174,7 @@ public class frm_Promotores extends JFrame {
 		contentPane.add(txtIdAgencia);
 
 		JButton btnRegistrar = new JButton("REGISTRAR");
+		btnRegistrar.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\2290866_documents_download_download files_file_files_icon.png"));
 		btnRegistrar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -186,17 +187,8 @@ public class frm_Promotores extends JFrame {
 			}
 		});
 		btnRegistrar.setFont(new Font("Tahoma", Font.BOLD, 11));
-		btnRegistrar.setBounds(222, 227, 113, 23);
+		btnRegistrar.setBounds(265, 207, 149, 37);
 		contentPane.add(btnRegistrar);
-
-		JButton btnCancelar = new JButton("CANCELAR");
-		btnCancelar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		btnCancelar.setFont(new Font("Tahoma", Font.BOLD, 11));
-		btnCancelar.setBounds(102, 227, 98, 23);
-		contentPane.add(btnCancelar);
 
 		JLabel lblNewLabel_2 = new JLabel("ID");
 		lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 11));
@@ -210,7 +202,7 @@ public class frm_Promotores extends JFrame {
 
 		JSeparator separator = new JSeparator();
 		separator.setOrientation(SwingConstants.VERTICAL);
-		separator.setBounds(462, 11, 15, 233);
+		separator.setBounds(462, 0, 15, 255);
 		contentPane.add(separator);
 
 		JLabel lblNewLabel_1_10 = new JLabel("OPCIONES DE REGISTROS  EXISTENTES");
@@ -243,7 +235,7 @@ public class frm_Promotores extends JFrame {
 			}
 		});
 		btnDelete.setFont(new Font("Tahoma", Font.BOLD, 11));
-		btnDelete.setBounds(699, 131, 129, 52);
+		btnDelete.setBounds(701, 131, 129, 52);
 		contentPane.add(btnDelete);
 
 		JButton btnNewButton_3 = new JButton("BUSCAR");
@@ -262,7 +254,7 @@ public class frm_Promotores extends JFrame {
 		btnNewButton_3.setIcon(
 				new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\613531_find_glass_magnifying_search_zoom_icon.png"));
 		btnNewButton_3.setFont(new Font("Tahoma", Font.BOLD, 11));
-		btnNewButton_3.setBounds(489, 133, 153, 48);
+		btnNewButton_3.setBounds(677, 65, 153, 48);
 		contentPane.add(btnNewButton_3);
 
 		JButton btnUpdate = new JButton("ACTUALIZAR");
@@ -279,7 +271,7 @@ public class frm_Promotores extends JFrame {
 		btnUpdate
 				.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\592600_arrow_cycle_interface_update_icon.png"));
 		btnUpdate.setFont(new Font("Tahoma", Font.BOLD, 11));
-		btnUpdate.setBounds(487, 192, 172, 48);
+		btnUpdate.setBounds(658, 196, 172, 48);
 		contentPane.add(btnUpdate);
 
 	}

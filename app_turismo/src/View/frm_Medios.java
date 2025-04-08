@@ -100,7 +100,7 @@ public class frm_Medios extends JFrame {
 		btnRegistrar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-					
+					//CREATE
 					cr.create(txtNombre.getText(),txtObservacion.getText(),Integer.parseInt(txtIDMedios.getText()));
 			}
 		});
@@ -133,6 +133,7 @@ public class frm_Medios extends JFrame {
 		btnDelete.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				//DELTE
 				cr.delete(Integer.parseInt(txtMedio.getText()));
 			}
 		});
@@ -149,6 +150,7 @@ public class frm_Medios extends JFrame {
 		btnNewButton_3.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				//READ
 				cr.Read(Integer.parseInt(txtMedio.getText()), txtNombre, txtObservacion,txtIDMedios);
 			}
 		});
@@ -162,6 +164,7 @@ public class frm_Medios extends JFrame {
 		btnUpdate.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				//UPDATE
 				cr.Update(Integer.parseInt(txtMedio.getText()),txtNombre.getText(),txtObservacion.getText(),Integer.parseInt(txtIDMedios.getText()));
 			}
 		});

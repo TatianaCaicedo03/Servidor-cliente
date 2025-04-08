@@ -162,7 +162,7 @@ public class frm_GUIPromotor extends JFrame {
 		btntipoVehiculo.setBounds(226, 261, 89, 57);
 		contentPane.add(btntipoVehiculo);
 		
-		JLabel lblNewLabel = new JLabel("CONTROL DE ACCESOS A  REGISTROS DE  EMPRESA TUSRISTICA");
+		JLabel lblNewLabel = new JLabel("MENÚ CONTROL DE ACCESOS A  REGISTROS DE  EMPRESA TUSRISTICA");
 		lblNewLabel.setFont(new Font("Yu Gothic UI Semilight", Font.BOLD, 11));
 		lblNewLabel.setBounds(116, 11, 352, 28);
 		contentPane.add(lblNewLabel);
@@ -206,7 +206,7 @@ public class frm_GUIPromotor extends JFrame {
 		});
 		
 		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 11));
-		btnNewButton.setBounds(463, 379, 68, 48);
+		btnNewButton.setBounds(501, 387, 68, 48);
 		contentPane.add(btnNewButton);
 		
 		JLabel lblNewLabel_1 = new JLabel("COMPAÑIAS");

@@ -96,7 +96,7 @@ public class frmTipomedios extends JFrame {
 				cr.create(txtNombre.getText(),txtObservacion.getText());
 			}
 		});
-		btnRegistrar.setBounds(10, 156, 164, 44);
+		btnRegistrar.setBounds(34, 156, 164, 44);
 		contentPane.add(btnRegistrar);
 		
 		txtNombre = new JTextField();
@@ -121,12 +121,12 @@ public class frmTipomedios extends JFrame {
 		
 		JLabel lblNewLabel_2_1 = new JLabel("ID MEDIOS");
 		lblNewLabel_2_1.setFont(new Font("Tahoma", Font.BOLD, 11));
-		lblNewLabel_2_1.setBounds(431, 65, 92, 14);
+		lblNewLabel_2_1.setBounds(367, 65, 92, 14);
 		contentPane.add(lblNewLabel_2_1);
 		
 		txtMedios = new JTextField();
 		txtMedios.setColumns(10);
-		txtMedios.setBounds(548, 62, 52, 20);
+		txtMedios.setBounds(450, 62, 52, 20);
 		contentPane.add(txtMedios);
 		
 		JButton btnDelete = new JButton("DELETE");
@@ -138,7 +138,7 @@ public class frmTipomedios extends JFrame {
 			}
 		});
 		btnDelete.setFont(new Font("Tahoma", Font.BOLD, 11));
-		btnDelete.setBounds(367, 102, 128, 45);
+		btnDelete.setBounds(565, 156, 128, 45);
 		contentPane.add(btnDelete);
 		
 		
@@ -155,7 +155,7 @@ public class frmTipomedios extends JFrame {
 		});
 		btnNewButton_3.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\613531_find_glass_magnifying_search_zoom_icon.png"));
 		btnNewButton_3.setFont(new Font("Tahoma", Font.BOLD, 11));
-		btnNewButton_3.setBounds(526, 102, 146, 45);
+		btnNewButton_3.setBounds(547, 50, 146, 45);
 		contentPane.add(btnNewButton_3); 
 		
 		JButton btnUpdate = new JButton("ACTUALIZAR");
@@ -167,7 +167,7 @@ public class frmTipomedios extends JFrame {
 		});
 		btnUpdate.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\592600_arrow_cycle_interface_update_icon.png"));
 		btnUpdate.setFont(new Font("Tahoma", Font.BOLD, 11));
-		btnUpdate.setBounds(428, 154, 172, 48);
+		btnUpdate.setBounds(520, 102, 172, 48);
 		contentPane.add(btnUpdate);
 	}
 }

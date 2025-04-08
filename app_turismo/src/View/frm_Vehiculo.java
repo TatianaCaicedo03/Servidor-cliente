@@ -181,7 +181,7 @@ public class frm_Vehiculo extends JFrame {
 			}
 		});
 		btnNewButton_1.setFont(new Font("Tahoma", Font.BOLD, 11));
-		btnNewButton_1.setBounds(592, 177, 137, 57);
+		btnNewButton_1.setBounds(592, 190, 137, 57);
 		contentPane.add(btnNewButton_1);
 		
 		JLabel lblNewLabel_1_10_1 = new JLabel("ELIMINAR REGISTRO EXISTENTE");

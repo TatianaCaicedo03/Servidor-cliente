@@ -18,6 +18,8 @@ import java.awt.event.MouseEvent;
 import javax.swing.JSeparator;
 import javax.swing.SwingConstants;
 import javax.swing.ImageIcon;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class frm_Paquetes extends JFrame {
 
@@ -139,6 +141,11 @@ public class frm_Paquetes extends JFrame {
 		contentPane.add(lblNewLabel_1_1_1_5_5);
 
 		JButton btnRegistrar = new JButton("REGISTRAR");
+		btnRegistrar.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\2290866_documents_download_download files_file_files_icon.png"));
+		btnRegistrar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		btnRegistrar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -153,13 +160,8 @@ public class frm_Paquetes extends JFrame {
 			}
 		});
 		btnRegistrar.setFont(new Font("Tahoma", Font.BOLD, 11));
-		btnRegistrar.setBounds(228, 314, 104, 23);
+		btnRegistrar.setBounds(213, 278, 149, 41);
 		contentPane.add(btnRegistrar);
-
-		JButton btnCancelar = new JButton("CANCELAR");
-		btnCancelar.setFont(new Font("Tahoma", Font.BOLD, 11));
-		btnCancelar.setBounds(101, 314, 104, 23);
-		contentPane.add(btnCancelar);
 
 		txtIDDestino = new JTextField();
 		txtIDDestino.setBounds(10, 75, 104, 20);
@@ -247,7 +249,7 @@ public class frm_Paquetes extends JFrame {
 				cr.delete(Integer.parseInt(txtCodigoVenta.getText()));
 			}
 		});
-		btnNewButton.setBounds(385, 130, 135, 50);
+		btnNewButton.setBounds(552, 273, 135, 50);
 		contentPane.add(btnNewButton);
 
 		JLabel lblNewLabel_1_2 = new JLabel("OPCIONES DE  REGISTROS  EXISTENTES");
@@ -290,7 +292,7 @@ public class frm_Paquetes extends JFrame {
 		});
 		btnUpdate.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\592600_arrow_cycle_interface_update_icon.png"));
 		btnUpdate.setFont(new Font("Tahoma", Font.BOLD, 11));
-		btnUpdate.setBounds(434, 198, 172, 48);
+		btnUpdate.setBounds(540, 198, 172, 48);
 		contentPane.add(btnUpdate);
 	
 		
